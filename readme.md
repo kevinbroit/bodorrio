@@ -1,4 +1,4 @@
-# 💒 Bodorrio
+# 💒 Bodorrio N
 
 A lightweight Azure Function app for managing wedding invitations and guest responses.
 
