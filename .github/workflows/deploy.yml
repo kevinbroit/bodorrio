@@ -1,0 +1,35 @@
+name: 🚀 Deploy Azure Function
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🧰 Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: 🛠️ Restore dependencies
+        run: dotnet restore
+
+      - name: 🔨 Build project
+        run: dotnet build --configuration Release --no-restore
+
+      - name: 📦 Publish project
+        run: dotnet publish --configuration Release --output ./publish
+
+      - name: 🚀 Deploy to Azure Function App
+        uses: azure/functions-action@v1
+        with:
+          app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          package: ./publish
