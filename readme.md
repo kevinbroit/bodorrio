@@ -23,3 +23,45 @@ A lightweight Azure Function app for managing wedding invitations and guest resp
 ```bash
 func start
 
+### Or with dotnet:
+
+```bash
+dotnet run
+
+🔐 Add your local settings
+Create a file called local.settings.json:
+
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<your_connection_string>",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+  }
+}
+
+🔒 Make sure local.settings.json is excluded via .gitignore
+🧪 API Endpoints
+
+Method	Route	Description
+GET	/api/invites	Get all invites
+POST	/api/invites	Add a new invite
+DELETE	/api/invites	Delete an invite
+Example request (POST):
+{
+  "partitionKey": "1",
+  "rowKey": "Nacho"
+}
+📚 Technologies
+
+Azure Functions (Isolated .NET)
+Azure Table Storage
+C#
+OpenAPI (Swagger)
+📄 License
+
+MIT
+
+👤 Author
+
+Kevin Broit
+linkedin.com/in/kevinbroit
