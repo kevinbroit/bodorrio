@@ -7,11 +7,11 @@ using Microsoft.OpenApi.Models;
 
 namespace Bodorrio.Lista;
 
-public class ListaFunction
+public class InviteFunction
 {
-    private readonly ILogger<ListaFunction> _logger;
+    private readonly ILogger<InviteFunction> _logger;
 
-    public ListaFunction(ILogger<ListaFunction> logger)
+    public InviteFunction(ILogger<InviteFunction> logger)
     {
         _logger = logger;
     }
@@ -27,6 +27,7 @@ public class ListaFunction
 
         return await req.CreateJsonResponse(HttpStatusCode.OK, invites);
     }
+
 
     [Function("AddInvite")]
     [OpenApiOperation("AddInvite", tags: new[] { "Invites" }, Summary = "Insert an invite entity into Azure Table Storage")]
