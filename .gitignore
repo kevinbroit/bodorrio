@@ -1,0 +1,9 @@
+# Azure Functions local settings
+local.settings.json
+
+# Build output
+bin/
+obj/
+
+# VS Code settings (optional)
+.vscode/
