@@ -23,7 +23,7 @@ internal class InviteRepository
     internal static async Task<bool> DeleteInvite(InviteModel invite)
     {
         var response = await GetTable().DeleteEntityAsync(invite.PartitionKey, invite.RowKey);
-        return response.IsError;
+        return !response.IsError;
     }
     
     private static TableClient GetTable()
